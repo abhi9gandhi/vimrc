@@ -18,11 +18,13 @@ map ,P “+P
 map ,y “+y
 set clipboard =unnamed
 set go+=a
-set nobackup
+set nobackup " no backup files
+set noswapfile " no swap files
+set nowritebackup " no backup file while editing
 set showmode
 set paste
 set title " to set the title of terminal with file name
-set mouse=a " to enable mouse
+"set mouse=a " to enable mouse
 
 set history=2000 " saves last 200 commands 
 set undolevels=1000 " upto how much we can undo
