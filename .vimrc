@@ -130,7 +130,7 @@ function UnComment()
 endfunction
 
 " run the gcc for the curent file and run the exec
-map <C-R> :call CompileRunGcc()<CR>
+map <C-E> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
   exec "w"
   exec "!gcc % -o %<"
