@@ -35,8 +35,11 @@ set wildmode=list:longest
 set wildchar=<TAB>
 
 " Highlight when length is greater than 80 columns
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=red ctermfg=white guibg=#592928
 match OverLength /\%81v.\+/
+" White trailing spaces
+highlight trailingspaces ctermbg=yellow ctermfg=white guibg=#592929
+match trailingspaces /\s\+$/
 
 " Incase you type W instead of small w
 command WQ wq 
