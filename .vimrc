@@ -6,10 +6,13 @@
 "set wrap
 "set linebreak
 "set textwidth=8
+set undodir=$HOME/.vim_undo,/tmp
 " Auto completing ( and { brackets
 inoremap {<CR>  {<CR>}<Esc>O
 inoremap (       ( )<Esc>i
-
+inoremap " " "<Esc>i
+set wildmenu
+set wildmode=list:longest
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
@@ -129,17 +132,33 @@ endfunction
 function! _comment()
 "  let [fl, ll]=sort([line('v'), line('z')], 's:NumSort')
  " let mylist = getline(firstline, lastline)
-  let fl=line('.') " returns the start of visual mode
-  let ll=line('v') " returns the last line in buffer
-
-  let comment="/*"
-  let cl=getline(fl)
-  let cl2=comment.cl
-  call setline(fl, cl2)
-  let cl=getline(ll)
-  let comment="*/"
-  let cl2=comment.cl
-  call setline(ll, cl2)
+   let fl=line('.') " returns the start of visual mode
+" "  let ll=line('$') " returns the last line in buffer
+   let ll = search( "^$") - 2
+   let i = fl 
+   while i <= ll 
+        if i == fl
+            let comment="/*"
+            let cl=getline(fl)
+            let cl2=comment.cl
+            call setline(i, cl2)
+        elseif i == ll
+            let cl=getline(ll)
+            let comment="* "
+            let cl2= comment.cl
+            call setline(i,cl2 )
+            let cl = getline( ll)  
+            let comment="^@*/"
+            let cl2=cl.comment
+            call setline(ll, cl2)
+        else
+            let cl = getline( i)
+            let comment = "* "
+            let cl2 = comment.cl
+            call setline(i, cl2 ) 
+        endif
+        let i = i + 1
+   endwhile  
 endfunction
 
 
