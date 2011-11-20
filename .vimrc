@@ -34,12 +34,6 @@ set cursorline " to higlight the cursor line
 set wildmode=list:longest
 set wildchar=<TAB>
 
-" Highlight when length is greater than 80 columns
-highlight OverLength ctermbg=red ctermfg=white guibg=#592928
-match OverLength /\%81v.\+/
-" White trailing spaces
-highlight trailingspaces ctermbg=yellow ctermfg=white guibg=#592929
-match trailingspaces /\s\+$/
 
 " Incase you type W instead of small w
 command WQ wq 
@@ -48,11 +42,11 @@ command Wq wq
 " Incase you type Q instead of small q
 command Q q 
 
-" F3: Toggle expansion of tabs to spaces.
-nmap <F3> :set expandtab!<CR>
+" F3: Toggle to highlight trailing spaces.
+nmap <F3> :call Toogle_trailing_spaces()<CR>
 
 " Remove all trailing whitespace
-nmap <F9> :%s/\s\+$//
+nmap <F4> :call Toogle_overlength() <CR>
 
 " F5: Insert current date.
 map <F5> :r !date<CR>
@@ -66,6 +60,32 @@ inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
+
+let g:ttoogle = 0
+function Toogle_trailing_spaces()
+   if g:ttoogle == 1
+       highlight clear
+       let g:ttoogle = 0 
+   else
+   let g:ttoogle = 1
+   highlight trailingspaces ctermbg=yellow ctermfg=white guibg=#592929
+   match trailingspaces /\s\+$/   
+   endif 
+endfunction
+
+let g:overlen_toogle = 0
+function Toogle_overlength()
+   if g:overlen_toogle == 1
+       highlight clear
+       let g:overlen_toogle = 0 
+   else
+       let g:overlen_toogle = 1
+       highlight OverLength ctermbg=red ctermfg=white guibg=#592928
+       match OverLength /\%81v.\+/
+   endif 
+   endfunction
+
+ 
 
 "Function for commenting a block of Visually selected text
 function Comment()
