@@ -3,6 +3,13 @@
 " Select line by visual mode to fold and then press <F9> 
 "! <command> --> Run a command on shell prompt
 
+"set wrap
+"set linebreak
+"set textwidth=8
+" Auto completing ( and { brackets
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap (       ( )<Esc>i
+
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
@@ -22,13 +29,13 @@ set nobackup " no backup files
 set noswapfile " no swap files
 set nowritebackup " no backup file while editing
 set showmode
-set paste
+"set paste
 set title " to set the title of terminal with file name
 "set mouse=a " to enable mouse
 " Enable to undo file even after it was closed
-set  undofile
+set undofile
 
-set history=2000 " saves last 200 commands 
+set history=2000 " saves last 2000 commands 
 set undolevels=1000 " upto how much we can undo
 
 set cursorline " to higlight the cursor line
