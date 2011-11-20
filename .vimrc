@@ -42,10 +42,10 @@ command Wq wq
 " Incase you type Q instead of small q
 command Q q 
 
-" F3: Toggle to highlight trailing spaces.
+" F3: Toggle highlight of trailing whitespaces.
 nmap <F3> :call Toogle_trailing_spaces()<CR>
 
-" Remove all trailing whitespace
+" F4: Toogle highlight of overlength lines
 nmap <F4> :call Toogle_overlength() <CR>
 
 " F5: Insert current date.
@@ -61,6 +61,8 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
+
+" F3: Toggle highlight of trailing whitespaces.
 let g:ttoogle = 0
 function Toogle_trailing_spaces()
    if g:ttoogle == 1
@@ -73,6 +75,7 @@ function Toogle_trailing_spaces()
    endif 
 endfunction
 
+" F4: Toogle highlight of overlength lines
 let g:overlen_toogle = 0
 function Toogle_overlength()
    if g:overlen_toogle == 1
