@@ -25,6 +25,8 @@ set showmode
 set paste
 set title " to set the title of terminal with file name
 "set mouse=a " to enable mouse
+" Enable to undo file even after it was closed
+set  undofile
 
 set history=2000 " saves last 200 commands 
 set undolevels=1000 " upto how much we can undo
