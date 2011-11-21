@@ -2,10 +2,13 @@
 " C-r --> Run gcc on files and execute
 " Select line by visual mode to fold and then press <F9> 
 "! <command> --> Run a command on shell prompt
+" select the area by visual mode, press ~ to change the case  
 
 "set wrap
 "set linebreak
 "set textwidth=8
+" "vmap <C-c> y: call system( " xclip -i -selection clipboard" , getreg( " \" " ))<CR>
+" "nmap <C-v> :call setreg( " \" " ,system( " xclip -o -selection clipboard" ))<CR>p"")""")""")"")
 set undodir=$HOME/.vim_undo,/tmp
 " Auto completing ( and { brackets
 inoremap {<CR>  {<CR>}<Esc>O
@@ -63,10 +66,11 @@ nmap <F4> :call Toogle_overlength() <CR>
 " F5: Insert current date.
 map <F5> :r !date<CR>
 
-vmap <F6> :call _comment() <CR> 
+map <F6> :call _comment() <CR> 
  
 " Save the file for ww
 map ww :w <CR>
+vmap <F7> : 
 " Manually fold some line 
 inoremap <F9> <C-O>za
 nnoremap <F9> za
@@ -100,34 +104,6 @@ function Toogle_overlength()
    endif 
    endfunction
 
- 
-
-"Function for commenting a block of Visually selected text
-function Comment()
-  let fl=line("v") " returns the start of visual mode
-  let ll=line("$") " returns the last line in buffer
-  let i=fl
-
-  let comment="/*"
-  while i<=ll
-    let cl=getline(i)
-    if i == fl
-      let cl2=comment.cl
-      call setline(i, cl2)
-    endif
-    if i == ll
-      let comment="*/"
-      let cl2=comment.cl
-      call setline(i, cl2)
-    endif    
-    let i=i+1
-  endwhile
-endfunction
-" Function to sort
-function! s:NumSort(a, b)
-    return a:a>a:b ? 1 : a:a==a:b ? 0 : -1
-endfunction
-
 "Function for commenting a block of Visually selected text
 function! _comment()
 "  let [fl, ll]=sort([line('v'), line('z')], 's:NumSort')
@@ -148,7 +124,7 @@ function! _comment()
             let cl2= comment.cl
             call setline(i,cl2 )
             let cl = getline( ll)  
-            let comment="^@*/"
+            let comment="*/"
             let cl2=cl.comment
             call setline(ll, cl2)
         else
@@ -163,21 +139,26 @@ endfunction
 
 
 "Function for Un-Commenting a block of Visually selected text
-function UnComment()
+function _uncomment()
   let fl=line("v") " returns the start of visual mode
-  let ll=line("$") " returns the last line in buffer
+  let ll=search("^$") -2 " returns the last line in buffer
   let i=fl
 
   let comment="/*"
   while i<=ll
     let cl=getline(i)
     if i == fl
-      let cl2=substitute(cl, "/*", "", "")
-      call setline(i, cl2)
-    endif
-    if i == ll
-      let cl2=substitute(cl, "*/", "", "")
-      call setline(i, cl2)
+        let cl2=substitute(cl, "\/\*", "", "")
+        call setline(i, cl2)
+    elseif i == ll
+        let cl2=substitute(cl, "*/", "", "")
+        call setline(i, cl2)
+        let cl=getline(i)
+        let cl2 = substitute(cl, "*", "", "")
+        call setline(i, cl2)
+    else
+        let cl2 = substitute(cl, "*", "", "")
+        call setline(i, cl2)
     endif    
     let i=i+1
   endwhile
