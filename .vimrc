@@ -10,10 +10,11 @@
 " "vmap <C-c> y: call system( " xclip -i -selection clipboard" , getreg( " \" " ))<CR>
 " "nmap <C-v> :call setreg( " \" " ,system( " xclip -o -selection clipboard" ))<CR>p"")""")""")"")
 set undodir=$HOME/.vim_undo,/tmp
+set smartindent
 " Auto completing ( and { brackets
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap (       ( )<Esc>i
-inoremap " " "<Esc>i
+"inoremap {<CR>  {<CR>}<Esc>O
+"inoremap (       ( )<Esc>i
+" "inoremap " " "<Esc>i
 set wildmenu
 set wildmode=list:longest
 set softtabstop=4
@@ -32,8 +33,11 @@ map ,y “+y
 set clipboard =unnamed
 set go+=a
 set nobackup " no backup files
+set backup
+set backupdir =/home/apgandhi/backup 
+"set backupdir =/studies/backup
 set noswapfile " no swap files
-set nowritebackup " no backup file while editing
+"set nowritebackup " no backup file while editing
 set showmode
 "set paste
 set title " to set the title of terminal with file name
@@ -66,7 +70,7 @@ nmap <F4> :call Toogle_overlength() <CR>
 " F5: Insert current date.
 map <F5> :r !date<CR>
 
-map <F6> :call _comment() <CR> 
+vnoremap <F6> :call _comment() <CR>
  
 " Save the file for ww
 map ww :w <CR>
@@ -76,6 +80,11 @@ inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
+
+"function Cscope()
+"  cs add ./cscope.out
+"endfunction 
+"call Cscope()
 
 
 " F3: Toggle highlight of trailing whitespaces.
@@ -108,9 +117,8 @@ function Toogle_overlength()
 function! _comment()
 "  let [fl, ll]=sort([line('v'), line('z')], 's:NumSort')
  " let mylist = getline(firstline, lastline)
-   let fl=line('.') " returns the start of visual mode
-" "  let ll=line('$') " returns the last line in buffer
-   let ll = search( "^$") - 2
+   let fl=line("'<" ) " returns the start of visual mode
+   let ll=line("'>") " returns the last line in buffer
    let i = fl 
    while i <= ll 
         if i == fl
@@ -124,7 +132,11 @@ function! _comment()
             let cl2= comment.cl
             call setline(i,cl2 )
             let cl = getline( ll)  
-            let comment="*/"
+            let comment="\n"
+            let cl2=cl.comment
+            call setline(ll, cl2)
+            let cl=getline(ll)
+            let comment ="*/"
             let cl2=cl.comment
             call setline(ll, cl2)
         else
@@ -140,24 +152,26 @@ endfunction
 
 "Function for Un-Commenting a block of Visually selected text
 function _uncomment()
-  let fl=line("v") " returns the start of visual mode
-  let ll=search("^$") -2 " returns the last line in buffer
+  let fl=line("'<") " returns the start of visual mode
+  let ll=line("'>") " returns the last line in buffer
   let i=fl
 
-  let comment="/*"
   while i<=ll
     let cl=getline(i)
     if i == fl
-        let cl2=substitute(cl, "\/\*", "", "")
+        let cl2=substitute(cl, "\/", "", "")
+        call setline(i, cl2)
+        let cl=getline(i)
+        let cl2=substitute(cl, "\*", "", "")
         call setline(i, cl2)
     elseif i == ll
         let cl2=substitute(cl, "*/", "", "")
         call setline(i, cl2)
         let cl=getline(i)
-        let cl2 = substitute(cl, "*", "", "")
+        let cl2 = substitute(cl, "* ", "", "")
         call setline(i, cl2)
     else
-        let cl2 = substitute(cl, "*", "", "")
+        let cl2 = substitute(cl, "* ", "", "")
         call setline(i, cl2)
     endif    
     let i=i+1
