@@ -9,6 +9,7 @@
 "set textwidth=8
 " "vmap <C-c> y: call system( " xclip -i -selection clipboard" , getreg( " \" " ))<CR>
 " "nmap <C-v> :call setreg( " \" " ,system( " xclip -o -selection clipboard" ))<CR>p"")""")""")"")
+colorscheme desert  
 set undodir=$HOME/.vim_undo,/tmp
 set smartindent
 " Auto completing ( and { brackets
@@ -52,7 +53,7 @@ set cursorline " to higlight the cursor line
 
 set wildmode=list:longest
 set wildchar=<TAB>
-
+filetype plugin indent on
 
 " Incase you type W instead of small w
 command WQ wq 
