@@ -33,9 +33,9 @@ map ,P “+P
 map ,y “+y
 set clipboard =unnamed
 set go+=a
-set nobackup " no backup files
+"set nobackup " no backup files
 set backup
-set backupdir =/home/apgandhi/backup 
+set backupdir =/root/abhi/vim_bk 
 "set backupdir =/studies/backup
 set noswapfile " no swap files
 "set nowritebackup " no backup file while editing
@@ -82,6 +82,9 @@ nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zf
 
+cscope add ./cscope.out
+cnoreabbrev csf cs find
+
 "function Cscope()
 "  cs add ./cscope.out
 "endfunction 
@@ -114,70 +117,6 @@ function Toogle_overlength()
    endif 
    endfunction
 
-"Function for commenting a block of Visually selected text
-function! _comment()
-"  let [fl, ll]=sort([line('v'), line('z')], 's:NumSort')
- " let mylist = getline(firstline, lastline)
-   let fl=line("'<" ) " returns the start of visual mode
-   let ll=line("'>") " returns the last line in buffer
-   let i = fl 
-   while i <= ll 
-        if i == fl
-            let comment="/*"
-            let cl=getline(fl)
-            let cl2=comment.cl
-            call setline(i, cl2)
-        elseif i == ll
-            let cl=getline(ll)
-            let comment="* "
-            let cl2= comment.cl
-            call setline(i,cl2 )
-            let cl = getline( ll)  
-            let comment="\n"
-            let cl2=cl.comment
-            call setline(ll, cl2)
-            let cl=getline(ll)
-            let comment ="*/"
-            let cl2=cl.comment
-            call setline(ll, cl2)
-        else
-            let cl = getline( i)
-            let comment = "* "
-            let cl2 = comment.cl
-            call setline(i, cl2 ) 
-        endif
-        let i = i + 1
-   endwhile  
-endfunction
-
-
-"Function for Un-Commenting a block of Visually selected text
-function _uncomment()
-  let fl=line("'<") " returns the start of visual mode
-  let ll=line("'>") " returns the last line in buffer
-  let i=fl
-
-  while i<=ll
-    let cl=getline(i)
-    if i == fl
-        let cl2=substitute(cl, "\/", "", "")
-        call setline(i, cl2)
-        let cl=getline(i)
-        let cl2=substitute(cl, "\*", "", "")
-        call setline(i, cl2)
-    elseif i == ll
-        let cl2=substitute(cl, "*/", "", "")
-        call setline(i, cl2)
-        let cl=getline(i)
-        let cl2 = substitute(cl, "* ", "", "")
-        call setline(i, cl2)
-    else
-        let cl2 = substitute(cl, "* ", "", "")
-        call setline(i, cl2)
-    endif    
-    let i=i+1
-  endwhile
-endfunction
 
 " run the gcc for the curent file and run the exec
 map <C-E> :call CompileRunGcc()<CR>
