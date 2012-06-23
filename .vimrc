@@ -33,7 +33,7 @@ map ,P “+P
 map ,y “+y
 set clipboard =unnamed
 set go+=a
-set nobackup " no backup files
+"set nobackup " no backup files
 set backup
 set backupdir =/home/apgandhi/backup 
 "set backupdir =/studies/backup
