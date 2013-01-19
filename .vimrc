@@ -1,6 +1,4 @@
-"Abhinav Newly added line
 ""CR --> Enter
-" C-r --> Run gcc on files and execute
 " Select line by visual mode to fold and then press <F9> 
 "! <command> --> Run a command on shell prompt
 " select the area by visual mode, press ~ to change the case  
@@ -35,8 +33,8 @@ map ,y “+y
 set clipboard =unnamed
 set go+=a
 "set nobackup " no backup files
-set backup
-set backupdir =/root/abhi/vim_bk 
+"set backup
+"set backupdir =/root/abhi/vim_bk 
 "set backupdir =/studies/backup
 set noswapfile " no swap files
 "set nowritebackup " no backup file while editing
@@ -55,6 +53,12 @@ set cursorline " to higlight the cursor line
 set wildmode=list:longest
 set wildchar=<TAB>
 filetype plugin indent on
+"Cscope quick fixes c \s
+set cscopequickfix=s-,c-,d-,i-,t-,f-,e-
+:map <F9>  :cp<CR>
+:map <F10> :cn<CR>
+:map <F11> :cope 15<CR>
+
 
 " Incase you type W instead of small w
 command WQ wq 
@@ -78,10 +82,10 @@ vnoremap <F6> :call _comment() <CR>
 map ww :w <CR>
 vmap <F7> : 
 " Manually fold some line 
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zf
+inoremap <F7> <C-O>za
+nnoremap <F7> za
+onoremap <F7> <C-C>za
+vnoremap <F7> zf
 
 cscope add ./cscope.out
 cnoreabbrev csf cs find
@@ -118,11 +122,3 @@ function Toogle_overlength()
    endif 
    endfunction
 
-
-" run the gcc for the curent file and run the exec
-map <C-E> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-  exec "w"
-  exec "!gcc % -o %<"
-  exec "! ./%<"
-endfunc
