@@ -58,7 +58,7 @@ set cscopequickfix=s-,c-,d-,i-,t-,f-,e-
 :map <F9>  :cp<CR>
 :map <F10> :cn<CR>
 :map <F11> :cope 15<CR>
-
+:map <C-F> :cs find f
 
 " Incase you type W instead of small w
 command WQ wq 
