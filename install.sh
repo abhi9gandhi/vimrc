@@ -10,8 +10,6 @@ done
 # Add bash aliases.
 if [ -f ~/.bashrc_abgandhi ]; then
     source ~/.bashrc_abgandhi
-else
-
 fi
 
 echo "Done."
