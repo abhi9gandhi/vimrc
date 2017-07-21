@@ -51,10 +51,6 @@ bind '"\C-h": beginning-of-line'
 export PS1='$_view@\h:\w\$ '
 #stty erase ''
 
-[ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
-keychain -q ~/.ssh/id_rsa 
-. ~/.ssh-agent-${HOSTNAME}
-
 ##
 # Source other rc files after this line.
 alias fin="find . -name '*.c' -o -name '*.h' -o -name '*.cc' -o -name '*.mk' -o -name '*.inc' -o -name '*.sh' -o -name '*.cpp' -o -name '*.hpp' > cscope.files"
