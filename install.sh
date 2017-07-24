@@ -6,9 +6,12 @@ echo "Downloading dependencies"
 sudo apt-get install vim -y
 sudo apt-get install tmux -y
 
+pdir=$(pwd)
+echo $pdir
+
 echo "Creating symlink"
 for file in $dotfiles; do
-        ln -snvf $file ~/$file
+        ln -snvf $pdir/$file ~/$file
 done
 
 # Add bash aliases.
