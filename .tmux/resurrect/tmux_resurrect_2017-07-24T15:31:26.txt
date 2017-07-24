@@ -1,0 +1,37 @@
+pane	0	1	:ssh	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	2	:229	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	3	:229	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	4	:229	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	5	:229	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	6	:ssh	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	7	:ssh	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	8	:ssh	0	: 	1	:/users/abgandhi	1	ssh	:ssh root@centbuild03
+pane	0	9	:lnx01	0	: 	1	:/ws/abgandhi-sjc/rogandhi_dotfiles/dotfiles	1	ssh	:ssh root@centbuild03
+pane	0	10	:ssh	0	: 	1	:/ws/abgandhi-sjc	1	ssh	:ssh root@centbuild03
+pane	0	11	:bash	0	: 	1	:/users/abgandhi	1	bash	:
+pane	0	12	:ssh	0	: 	1	:/ws/abgandhi-sjc/IWAN	1	ssh	:ssh icsp@icsp-fileserver.cisco.com
+pane	0	13	:ssh	0	: 	1	:/users/abgandhi	1	ssh	:ssh icsp@icsp-docker-registry.cisco.com
+pane	0	14	:ssh	0	: 	1	:/users/abgandhi	1	ssh	:ssh lab@pfrsc-lnx-15
+pane	0	15	:ssh	1	:*	1	:/ws/abgandhi-sjc	1	ssh	:ssh icsp@icsp-22
+pane	0	16	:bash	0	:-	1	:/users/abgandhi/vimrc	1	bash	:
+pane	2	1	:bash	0	:-	1	:/users/abgandhi/vimrc	1	bash	:
+pane	2	2	:bash	1	:*	1	:/users/abgandhi/vimrc/.tmux/plugins	1	bash	:
+window	0	1	0	: 	696b,270x59,0,0,98
+window	0	2	0	: 	e967,270x59,0,0,28
+window	0	3	0	: 	e968,270x59,0,0,29
+window	0	4	0	: 	6960,270x59,0,0,30
+window	0	5	0	: 	6961,270x59,0,0,31
+window	0	6	0	: 	e962,270x59,0,0,61
+window	0	7	0	: 	6964,270x59,0,0,72
+window	0	8	0	: 	6963,270x59,0,0,90
+window	0	9	0	: 	696a,270x59,0,0,59
+window	0	10	0	: 	e965,270x59,0,0,64
+window	0	11	0	: 	e962,270x59,0,0,80
+window	0	12	0	: 	6968,270x59,0,0,95
+window	0	13	0	: 	6969,270x59,0,0,96
+window	0	14	0	: 	696a,270x59,0,0,97
+window	0	15	1	:*	b4e0,270x59,0,0,101
+window	0	16	0	:-	b4e1,270x59,0,0,102
+window	2	1	0	:-	b4e3,270x59,0,0,104
+window	2	2	1	:*	b4e4,270x59,0,0,105
+state	2	2

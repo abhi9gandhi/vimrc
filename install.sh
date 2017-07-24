@@ -1,10 +1,10 @@
 #!/bin/bash -xe
 
-dotfiles=".bashrc_abgandhi .vim .vimrc .tmux.conf"
+dotfiles=".bashrc_abgandhi .vim .vimrc .tmux.conf .tmux"
 
 echo "Downloading dependencies"
-sudo apt-get install vim -y
-sudo apt-get install tmux -y
+#sudo apt-get install vim -y
+#sudo apt-get install tmux -y
 
 pdir=$(pwd)
 echo $pdir
