@@ -2,6 +2,9 @@
 
 dotfiles=".bashrc_abgandhi .vim .vimrc .tmux.conf .tmux"
 
+echo "Installing submodules"
+git submodule update
+
 echo "Downloading dependencies"
 #sudo apt-get install vim -y
 #sudo apt-get install tmux -y
