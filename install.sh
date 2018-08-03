@@ -8,6 +8,7 @@ git submodule update
 echo "Downloading dependencies"
 #sudo apt-get install vim -y
 #sudo apt-get install tmux -y
+#sudo at-get install curl -y
 
 pdir=$(pwd)
 echo $pdir
